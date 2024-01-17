@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_demo/refresh/custom_scroll_view.dart';
 
+import 'custom_scroll_view_pull_up.dart';
 import 'nest_scroll_view.dart';
 
 class RefreshListViewPage extends StatefulWidget {
@@ -12,22 +13,26 @@ class RefreshListViewPage extends StatefulWidget {
 
 class _RefreshListViewPageState extends State<RefreshListViewPage> {
 
-  List<String> _titles = ['customScrollView', 'NestedScrollView'];
+  List<String> _titles = ['customScrollView(pull_to_refresh_notification) 下拉刷新', 'NestedScrollView(pull_to_refresh_notification) 下拉刷新', 'customScrollView(pull_to_refresh_flutter3)'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('flutter ui demo'),),
         body: Container(
-          child: ListView.builder(itemBuilder: (context, index) {
-            return ListTile(title: Text(_titles[index],), onTap: () {
+          child: ListView.separated(itemBuilder: (context, index){
+            return ListTile(title: FittedBox(fit: BoxFit.contain, child: Text(_titles[index],)), onTap: () {
               if (index == 0) {
                 _onTapCustomScrollView();
               } else if (index == 1) {
                 _onTapNestScrollView();
+              } else if (index == 2) {
+                _onTapCustomScrollRefresh();
               }
             },);
-          }, itemCount: _titles.length, itemExtent: 44,),
+          }, separatorBuilder: (context, index) {
+            return Divider(color: Colors.white,);
+          }, itemCount: _titles.length,)
         )
     );
   }
@@ -37,5 +42,9 @@ class _RefreshListViewPageState extends State<RefreshListViewPage> {
 
     _onTapNestScrollView() {
       Navigator.push(context, MaterialPageRoute(builder: (context) => NestScrollViewRefreshPage()));
+    }
+
+    _onTapCustomScrollRefresh() {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => CustomScrollViewPullDownRefreshPage()));
     }
 }
