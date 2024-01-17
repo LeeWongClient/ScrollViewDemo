@@ -2,14 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 import 'package:flutter/rendering.dart';
-import 'package:flutter_ui_demo/floating_app_bar.dart';
-import 'package:flutter_ui_demo/sliver_app_bar_background.dart';
-import 'package:flutter_ui_demo/sliver_app_bar_demo.dart';
+import 'package:flutter_ui_demo/Loading/loading_view.dart';
+import 'package:flutter_ui_demo/alertView/alert_view.dart';
+import 'package:flutter_ui_demo/popView/pop_view.dart';
+import 'package:flutter_ui_demo/vieweffect/view_effect.dart';
 
-import 'fix_header_on_top.dart';
-import 'list_view_and_header.dart';
-import 'nest_scroll_view.dart';
-import 'nestscrollview_sliverappbar.dart';
+import 'listview/list_view_demo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -77,13 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextButton(onPressed: _onTapListViewAndZoomHeader, child: Text('拉下放大header+滚动视图')),
-              TextButton(onPressed: _onTapFloatingAppBar, child: Text('appBar 默认效果')),
-              TextButton(onPressed: _onTapStickHeader, child: Text('吸顶效果 有导航')),
-              TextButton(onPressed: _onTapSliverAppBar, child: Text('sliver app bar ')),
-              TextButton(onPressed: _onTapSliverAppBarBackground, child: Text('sliver app bar background')),
-              TextButton(onPressed: _onTapNestScrollView, child: Text('nestscrollview demo')),
-              TextButton(onPressed: _onTapNestScrollViewAndAppBar, child: Text('nestscrollviewandappbar demo'))
+              TextButton(onPressed: _onTapListView, child: Text('列表视图示例')),
+              TextButton(onPressed: _onTapGradient, child: Text('渐变效果示例')),
+              TextButton(onPressed: _onTapPopView, child: Text('底部弹窗类')),
+              TextButton(onPressed: _onTapAlertView, child: Text('页面中间弹窗类')),
+              TextButton(onPressed: _onTapLoadingView, child: Text('Loading')),
             ],
           ),
         ),
@@ -91,31 +87,23 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  _onTapListViewAndZoomHeader() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewWithHeader()));
+  _onTapListView() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ListViewPage()));
   }
 
-  _onTapFloatingAppBar() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => FloatingAppBarDemo()));
+  _onTapGradient() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ViewEffectPage()));
   }
 
-  _onTapStickHeader() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => StickHeaderPage()));
+  _onTapPopView() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => PopViewPage()));
   }
 
-  _onTapSliverAppBar() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SliverAppBarDemo()));
+  _onTapAlertView() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AlertViewPage()));
   }
 
-  _onTapSliverAppBarBackground() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => SliverAppBarBackgoundDemo()));
-  }
-
-  _onTapNestScrollView() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => NestScrollViewDemo()));
-  }
-
-  _onTapNestScrollViewAndAppBar() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => NestScrollViewAndAppBar()));
+  _onTapLoadingView() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LoadingPage()));
   }
 }
