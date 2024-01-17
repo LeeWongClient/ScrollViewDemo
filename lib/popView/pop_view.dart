@@ -9,28 +9,32 @@ class PopViewPage extends StatefulWidget {
 }
 
 class _PopViewPageState extends State<PopViewPage> {
+
+  List<String> _titles = ['底部弹出视图(简单版)', '底部弹出视图(全屏款)', '底部弹出视图(外部颜色)', '底部弹出视图(不可拖拽)', '底部弹出视图(有列表)', '底部弹出视图(粗门款 有斜边)'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('底部弹出视图样式'),),
-      body: Center(
-        child: Container(
-          width: 400,
-          height: 600,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(onPressed: _buildBottomPopView, child: Text('底部弹出视图(简单版)')),
-              TextButton(onPressed: _buildBottomFullScreenPopView, child: Text('底部弹出视图(全屏款)')),
-              TextButton(onPressed: _buildOtherColorBottomPopView, child: Text('底部弹出视图(外部颜色)')),
-              TextButton(onPressed: _buildDragDismissBottomPopView, child: Text('底部弹出视图(不可拖拽)')),
-              TextButton(onPressed: _buildBottomPopListView, child: Text('底部弹出视图(有列表)')),
-              TextButton(onPressed: _buildCumenBottomPopView, child: Text('底部弹出视图(粗门款 有斜边)')),
-            ],
-          ),
-        ),
-      ),
+        appBar: AppBar(title: Text('flutter ui demo'),),
+        body: Container(
+          child: ListView.builder(itemBuilder: (context, index) {
+            return ListTile(title: Text(_titles[index],), onTap: () {
+              if (index == 0) {
+                _buildBottomPopView();
+              } else if (index == 1) {
+                _buildBottomFullScreenPopView();
+              } else if(index == 2) {
+                _buildOtherColorBottomPopView();
+              } else if(index == 3) {
+                _buildDragDismissBottomPopView();
+              } else if(index == 4) {
+                _buildBottomPopListView();
+              } else if(index == 5) {
+                _buildCumenBottomPopView();
+              }
+            },);
+          }, itemCount: _titles.length, itemExtent: 44,),
+        )
     );
   }
 

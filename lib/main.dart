@@ -5,6 +5,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_ui_demo/Loading/loading_view.dart';
 import 'package:flutter_ui_demo/alertView/alert_view.dart';
 import 'package:flutter_ui_demo/popView/pop_view.dart';
+import 'package:flutter_ui_demo/refresh/listview_refresh.dart';
 import 'package:flutter_ui_demo/vieweffect/view_effect.dart';
 
 import 'listview/list_view_demo.dart';
@@ -40,7 +41,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
@@ -64,27 +65,36 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final List<String> _titles = ['列表视图示例', '渐变效果示例', '底部弹窗类', '页面中间弹窗类', 'Loading框', '上下拉刷新'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          width: 400,
-          height: 600,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(onPressed: _onTapListView, child: Text('列表视图示例')),
-              TextButton(onPressed: _onTapGradient, child: Text('渐变效果示例')),
-              TextButton(onPressed: _onTapPopView, child: Text('底部弹窗类')),
-              TextButton(onPressed: _onTapAlertView, child: Text('页面中间弹窗类')),
-              TextButton(onPressed: _onTapLoadingView, child: Text('Loading')),
-            ],
-          ),
-        ),
-      ),
+      appBar: AppBar(title: Text('flutter ui demo'),),
+      body: Container(
+        child: ListView.builder(itemBuilder: (context, index){
+          return ListTile(title: Text(_titles[index],), onTap: () {
+            if(index == 0) {
+              _onTapListView();
+            } else if(index == 1) {
+              _onTapGradient();
+            } else if(index == 2) {
+              _onTapPopView();
+            } else if(index == 3) {
+              _onTapAlertView();
+            } else if(index == 4) {
+              _onTapLoadingView();
+            } else if(index == 5) {
+              _onTapRefresh();
+            }
+          },);
+        }, itemCount: _titles.length, itemExtent: 44,),
+      )
     );
+  }
+
+  _onTapRefresh() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => RefreshListViewPage()));
   }
 
   _onTapListView() {

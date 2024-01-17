@@ -9,25 +9,26 @@ class LoadingPage extends StatefulWidget {
 }
 
 class _LoadingPageState extends State<LoadingPage> {
+
+  List<String> _titles = ['页面中间的loading', '页面中间的loading(自定义)', '页面中间的loading(粗门)'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('alertView'),),
-      body: Center(
-        child: Container(
-          width: 400,
-          height: 600,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(onPressed: _onTapShowLoading, child: Text('页面中间的loading')),
-              TextButton(onPressed: _onTapFixWidthShowLoading, child: Text('页面中间的loading(自定义)')),
-              TextButton(onPressed: _onTapShowCumenLoading, child: Text('页面中间的loading(粗门)')),
-            ],
-          ),
-        ),
-      ),
+        appBar: AppBar(title: Text('flutter ui demo'),),
+        body: Container(
+          child: ListView.builder(itemBuilder: (context, index) {
+            return ListTile(title: Text(_titles[index],), onTap: () {
+              if (index == 0) {
+                _onTapShowLoading();
+              } else if (index == 1) {
+                _onTapFixWidthShowLoading();
+              } else if (index == 2) {
+                _onTapShowCumenLoading();
+              }
+            },);
+          }, itemCount: _titles.length, itemExtent: 44,),
+        )
     );
   }
 

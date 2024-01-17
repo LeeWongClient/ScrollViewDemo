@@ -19,6 +19,7 @@ class _ListViewPageState extends State<ListViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('list view demo'),),
       body: Center(
         child: Container(
           width: 400,

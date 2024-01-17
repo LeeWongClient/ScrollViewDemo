@@ -8,27 +8,30 @@ class AlertViewPage extends StatefulWidget {
 }
 
 class _AlertViewPageState extends State<AlertViewPage> {
+
+  List<String> _titles = ['默认alertView', '默认alertView(general版)', '默认simplealertView', '原始dialog', '原始dialog(内嵌listView)'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('alertView'),),
-      body: Center(
-        child: Container(
-          width: 400,
-          height: 600,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(onPressed: _alertOnView, child: Text('默认alertView')),
-              TextButton(onPressed: _generalAlertOnView, child: Text('默认alertView(general版)')),
-              TextButton(onPressed: _simpleAlertView, child: Text('默认simplealertView')),
-              TextButton(onPressed: _originDialogAlertView, child: Text('原始dialog')),
-              TextButton(onPressed: _originDialogAlertListView, child: Text('原始dialog(内嵌listView)')),
-            ],
-          ),
-        ),
-      ),
+        appBar: AppBar(title: Text('flutter ui demo'),),
+        body: Container(
+          child: ListView.builder(itemBuilder: (context, index) {
+            return ListTile(title: Text(_titles[index],), onTap: () {
+              if (index == 0) {
+                _alertOnView();
+              } else if (index == 1) {
+                _generalAlertOnView();
+              } else if (index == 2) {
+                _simpleAlertView();
+              } else if (index == 3) {
+                _originDialogAlertView();
+              } else if (index == 4) {
+                _originDialogAlertListView();
+              }
+            },);
+          }, itemCount: _titles.length, itemExtent: 44,),
+        )
     );
   }
 
