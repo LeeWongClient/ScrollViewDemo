@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_demo/router/gorouter/router_demo_go_router.dart';
 import 'package:flutter_ui_demo/router/router_demo_router_config_page.dart';
 import 'package:flutter_ui_demo/router/router_demo_second_page.dart';
 
@@ -11,7 +12,7 @@ class RouterDemoHomePage extends StatefulWidget {
 
 class _RouterDemoHomePageState extends State<RouterDemoHomePage> {
 
-  List<String> _titles = ['普通跳转和返回', '系统跳转(无动画版)', '带参数的跳转', '路由配置'];
+  List<String> _titles = ['普通跳转和返回', '系统跳转(无动画版)', '带参数的跳转', '路由配置', 'GoRouter'];
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +29,8 @@ class _RouterDemoHomePageState extends State<RouterDemoHomePage> {
                 _routerWithParam();
               } else if (index == 3) {
                 _routerWithConfig();
+              } else if (index == 4) {
+                _routerWithGoRouter();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -59,5 +62,9 @@ class _RouterDemoHomePageState extends State<RouterDemoHomePage> {
 
   _routerWithConfig() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => RouterConfigEntrance()));
+  }
+
+  _routerWithGoRouter() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => GoRouterMain()));
   }
 }
