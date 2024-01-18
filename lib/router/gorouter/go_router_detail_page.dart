@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 class GoRouterDetailPage extends StatefulWidget {
-  const GoRouterDetailPage({super.key});
-
+  const GoRouterDetailPage({super.key, this.params});
+  final Map<String, String>? params;
   @override
   State<GoRouterDetailPage> createState() => _GoRouterDetailPageState();
 }
@@ -13,7 +13,7 @@ class _GoRouterDetailPageState extends State<GoRouterDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Go Router Detail Page'),),
+      appBar: AppBar(title: Text('Go Router Detail Page param ${widget.params?['name'] ?? ''}', style: TextStyle(fontSize: 13),),),
       body: Container(
         child: ListView.builder(itemBuilder: (context, index) {
           return ListTile(title: Text(_titles[index],), onTap: () {
