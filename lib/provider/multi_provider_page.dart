@@ -51,10 +51,10 @@ class _MultiProviderPageState extends State<MultiProviderPage> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          FloatingActionButton(child: Icon(Icons.add), onPressed: (){
+          FloatingActionButton(heroTag: 1, child: Icon(Icons.add), onPressed: (){
             viewModel.currentCountAdd();
           }),
-          FloatingActionButton(child: Icon(Icons.exposure_minus_1), onPressed: (){
+          FloatingActionButton(heroTag: 2, child: Icon(Icons.exposure_minus_1), onPressed: (){
             viewModel2.currentCountMinus();
           }),
         ],

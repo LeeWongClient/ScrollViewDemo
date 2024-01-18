@@ -7,6 +7,7 @@ import 'package:flutter_ui_demo/alertView/alert_view.dart';
 import 'package:flutter_ui_demo/netImage/netImageViewPage.dart';
 import 'package:flutter_ui_demo/popView/pop_view.dart';
 import 'package:flutter_ui_demo/provider/multi_provider_page.dart';
+import 'package:flutter_ui_demo/provider/provider_demo_home_page.dart';
 import 'package:flutter_ui_demo/provider/ui_data_provider.dart';
 import 'package:flutter_ui_demo/refresh/listview_refresh.dart';
 import 'package:flutter_ui_demo/safeArea/safe_area_adapter.dart';
@@ -136,6 +137,6 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _onTapUIDataBinder() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => MultiProviderPage.provider()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => ProviderDemoPage()));
   }
 }

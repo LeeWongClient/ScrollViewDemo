@@ -16,29 +16,33 @@ class ListViewPage extends StatefulWidget {
 }
 
 class _ListViewPageState extends State<ListViewPage> {
+ final List<String> _titles = ['拉下放大header+滚动视图', 'appBar 默认效果', '吸顶效果 有导航', 'sliver app bar ', 'sliver app bar background', 'nestscrollview demo', 'nestscrollviewandappbar demo'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('list view demo'),),
-      body: Center(
-        child: Container(
-          width: 400,
-          height: 600,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              TextButton(onPressed: _onTapListViewAndZoomHeader, child: Text('拉下放大header+滚动视图')),
-              TextButton(onPressed: _onTapFloatingAppBar, child: Text('appBar 默认效果')),
-              TextButton(onPressed: _onTapStickHeader, child: Text('吸顶效果 有导航')),
-              TextButton(onPressed: _onTapSliverAppBar, child: Text('sliver app bar ')),
-              TextButton(onPressed: _onTapSliverAppBarBackground, child: Text('sliver app bar background')),
-              TextButton(onPressed: _onTapNestScrollView, child: Text('nestscrollview demo')),
-              TextButton(onPressed: _onTapNestScrollViewAndAppBar, child: Text('nestscrollviewandappbar demo'))
-            ],
-          ),
-        ),
-      ),
+        appBar: AppBar(title: const Text('list view demo'),),
+        body: Container(
+          child: ListView.builder(itemBuilder: (context, index) {
+            return ListTile(title: Text(_titles[index],), onTap: () {
+              if (index == 0) {
+                _onTapListViewAndZoomHeader();
+              } else if (index == 1) {
+                _onTapFloatingAppBar();
+              } else if(index == 2) {
+                _onTapStickHeader();
+              } else if(index == 3) {
+                _onTapSliverAppBar();
+              } else if(index == 4) {
+                _onTapSliverAppBarBackground();
+              } else if(index == 5) {
+                _onTapNestScrollView();
+              } else if (index == 6) {
+                _onTapNestScrollViewAndAppBar();
+              }
+            },);
+          }, itemCount: _titles.length, itemExtent: 44,),
+        )
     );
   }
 
