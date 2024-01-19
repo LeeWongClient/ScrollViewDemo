@@ -1,5 +1,4 @@
 import Flutter
-import UIKit
 
 public class FlutternativePlugin: NSObject, FlutterPlugin {
 
@@ -10,8 +9,10 @@ public class FlutternativePlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
     let channel = FlutterMethodChannel(name: "flutter_native", binaryMessenger: registrar.messenger())
     let eventChannel = FlutterEventChannel(name: "flutter_native/event", binaryMessenger: registrar.messenger())
-      
+    let networkChannel = FlutterEventChannel(name: "flutter_native/network", binaryMessenger: registrar.messenger())
+
     eventChannel.setStreamHandler(TimerStreamHandler())
+      networkChannel.setStreamHandler(NetworkStreamHandler())
       
     let instance = FlutternativePlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)

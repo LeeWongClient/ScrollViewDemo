@@ -17,9 +17,12 @@ class _NetworkListenerState extends State<NetworkListener> {
   @override
   void initState() {
     // TODO: implement initState
-    FlutterNativePlugin.eventListen(onEvent: (event){
+    FlutterNativePlugin.networkEventListen(onEvent: (event){
       print('收到事件通知 event = $event');
-    }, onError: (){
+      setState(() {
+        currentState = event;
+      });
+    }, onError: (error){
       print('收到事件失败通知');
     });
     super.initState();
@@ -36,8 +39,8 @@ class _NetworkListenerState extends State<NetworkListener> {
           children: [
             SizedBox(height: 200,),
             Text('当前网络状态: $currentState', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),),
-            SizedBox(height: 100,),
-            Text('可以尝试切换网络获取网络状态', style: TextStyle(fontSize: 24, fontWeight: FontWeight.normal, color: Colors.black45)),
+            SizedBox(height: 30,),
+            Text('可以尝试切换网络获取网络状态', style: TextStyle(fontSize: 14, fontWeight: FontWeight.normal, color: Colors.black45)),
           ],
         )
       ),

@@ -10,11 +10,18 @@ class FlutterNativePlugin {
   /// 实时数据传输：如果你需要在 Flutter 和原生平台之间进行实时数据传输，例如音频流、视频流等，EventChannel 可以作为一个双向通道，用于传递实时数据。你可以在 Flutter 和原生平台之间建立一个事件通道，通过流式传输的方式实时传递数据。
   /// 原生回调方法调用：有时你可能需要在 Flutter 中调用原生平台上的某个方法，并接收原生方法的回调结果。使用 EventChannel 可以建立一个双向通道，使得 Flutter 可以调用原生平台上的方法，并接收原生方法的回调结果，以便进行后续处理。
   static const EventChannel _eventChannel = const EventChannel('flutter_native/event');
+  static const EventChannel _networkChannel = const EventChannel('flutter_native/network');
 
   /// 数据监听
-  static eventListen({bool type = true, void Function(dynamic)? onEvent, Function? onError}) async {
+  static timerEventListen({bool type = true, void Function(dynamic)? onEvent, Function? onError}) async {
     assert(onEvent != null);
     _eventChannel.receiveBroadcastStream(type).listen(onEvent, onError: onError);
+  }
+
+  /// 数据监听
+  static networkEventListen({bool type = true, void Function(dynamic)? onEvent, Function? onError}) async {
+    assert(onEvent != null);
+    _networkChannel.receiveBroadcastStream(type).listen(onEvent, onError: onError);
   }
 
   /// 调用原生方法

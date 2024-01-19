@@ -1,6 +1,8 @@
 PODS:
+  - Alamofire (5.8.1)
   - Flutter (1.0.0)
   - flutternative (0.0.1):
+    - Alamofire
     - Flutter
   - path_provider_foundation (0.0.1):
     - Flutter
@@ -11,6 +13,10 @@ DEPENDENCIES:
   - flutternative (from `.symlinks/plugins/flutternative/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
 
+SPEC REPOS:
+  trunk:
+    - Alamofire
+
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
@@ -20,10 +26,11 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
 
 SPEC CHECKSUMS:
+  Alamofire: 3ca42e259043ee0dc5c0cdd76c4bc568b8e42af7
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
-  flutternative: dbbc4125354ada7cf7cd544bbd4c6a1617cfc0f1
+  flutternative: a2fc5e732d47417fe858e4a8f0ccb81ade8d3141
   path_provider_foundation: 3784922295ac71e43754bd15e0653ccfd36a147c
 
-PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
+PODFILE CHECKSUM: 4bb0d5af7b0a7a18570b26cd09a55bf9a905f81f
 
 COCOAPODS: 1.14.3

@@ -23,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    FlutterNativePlugin.eventListen(onEvent: (event){
+    FlutterNativePlugin.timerEventListen(onEvent: (event){
       print(event);
       setState(() {
         timeInterval = event;

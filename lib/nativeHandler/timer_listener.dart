@@ -18,8 +18,7 @@ class _TimerPageState extends State<TimerPage> {
   }
 
   void _startTimerSubscription() {
-    FlutterNativePlugin.eventListen(onEvent: (event){
-      print('收到事件通知 event = $event');
+    FlutterNativePlugin.timerEventListen(onEvent: (event){
       setState(() {
         currentTimerCount = event;
       });
