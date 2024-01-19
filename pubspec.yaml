@@ -54,6 +54,7 @@ dev_dependencies:
   pull_to_refresh_flutter3: ^2.0.2
   extended_image: ^8.1.1
   go_router: ^11.1.2
+  flutter_native_splash: ^2.3.5
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -69,6 +70,22 @@ flutter:
   assets:
     - images/
     - assets/lottie/
+  fonts:
+    - family: AliPHT-R
+      fonts:
+        - asset: assets/fonts/Alibaba-PuHuiTi-Regular.otf
+
+    - family: AliPHT-M
+      fonts:
+        - asset: assets/fonts/Alibaba-PuHuiTi-Medium.otf
+
+    - family: AliPHT-H
+      fonts:
+        - asset: assets/fonts/Alibaba-PuHuiTi-Heavy.ttf
+
+    - family: AliPHT-B
+      fonts:
+        - asset: assets/fonts/Alibaba-PuHuiTi-Bold.ttf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
@@ -100,3 +117,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_native_splash:
+  color: "#1FFD91"
+  image: assets/splash/ic_splash_image.png
+  ios_content_mode: scaleAspectFill
+  android_12:
+    color: "#FFFFFF"

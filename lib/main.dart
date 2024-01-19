@@ -16,9 +16,13 @@ import 'package:flutter_ui_demo/vieweffect/view_effect.dart';
 
 import 'listview/list_view_demo.dart';
 import 'nativeHandler/flutter_native_communication.dart';
-
+import 'other/other_page.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 void main() {
+  final widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
@@ -75,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
   final List<String> _titles = [
     '列表视图示例', '渐变效果示例', '底部弹窗类', '页面中间弹窗类',
     'Loading框', '上下拉刷新', '网络图片展示', '安全区域适配',
-    'UI和数据绑定', '路由', '与Native交互'
+    'UI和数据绑定', '路由', '与Native交互', '其他'
   ];
 
   @override
@@ -107,6 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
               _onTapRouter();
             } else if (index == 10) {
               _onTapNativeFlutter();
+            } else if (index == 11) {
+              _onTapOther();
             }
           },);
         }, itemCount: _titles.length, itemExtent: 44,),
@@ -156,5 +162,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _onTapNativeFlutter() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterNativeCommunicationPage()));
+  }
+
+  _onTapOther() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => OtherFlutterPage()));
   }
 }
