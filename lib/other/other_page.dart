@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'liefcycle/flutter_stful_life_cycle_page.dart';
 import 'load_local_font.dart';
 
 class OtherFlutterPage extends StatefulWidget {
@@ -10,7 +11,7 @@ class OtherFlutterPage extends StatefulWidget {
 }
 
 class _OtherFlutterPageState extends State<OtherFlutterPage> {
-  final List<String> _titles = ['加载字体', ];
+  final List<String> _titles = ['加载字体', '数据库Hive', '键盘监听和处理', '生命周期'];
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +22,12 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
             return ListTile(title: Text(_titles[index],), onTap: () {
               if (index == 0) {
                 _onTapLoadFont();
+              } else if(index == 1) {
+
+              } else if (index == 2) {
+
+              } else if (index == 3) {
+                _onTapLifeCycle();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -30,5 +37,9 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
 
   _onTapLoadFont() {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => LoadLocalFontPage()));
+  }
+
+  _onTapLifeCycle() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CounterWidget(title: '声明周期',)));
   }
 }

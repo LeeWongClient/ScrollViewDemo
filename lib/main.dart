@@ -3,6 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/rendering.dart';
 import 'package:flutter_ui_demo/Loading/loading_view.dart';
+import 'package:flutter_ui_demo/advanced/advance_flutter_page.dart';
 import 'package:flutter_ui_demo/alertView/alert_view.dart';
 import 'package:flutter_ui_demo/netImage/netImageViewPage.dart';
 import 'package:flutter_ui_demo/popView/pop_view.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_ui_demo/provider/ui_data_provider.dart';
 import 'package:flutter_ui_demo/refresh/listview_refresh.dart';
 import 'package:flutter_ui_demo/router/router_demo_home_page.dart';
 import 'package:flutter_ui_demo/safeArea/safe_area_adapter.dart';
+import 'package:flutter_ui_demo/vieweffect/ui_effect_demo.dart';
 import 'package:flutter_ui_demo/vieweffect/view_effect.dart';
 
 import 'listview/list_view_demo.dart';
@@ -77,9 +79,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<String> _titles = [
-    '列表视图示例', '渐变效果示例', '底部弹窗类', '页面中间弹窗类',
+    '列表视图示例', 'UI效果示例', '底部弹窗类', '页面中间弹窗类',
     'Loading框', '上下拉刷新', '网络图片展示', '安全区域适配',
-    'UI和数据绑定', '路由', '与Native交互', '其他'
+    'UI和数据绑定', '路由', '与Native交互', '高级功能', '其他'
   ];
 
   @override
@@ -112,6 +114,8 @@ class _MyHomePageState extends State<MyHomePage> {
             } else if (index == 10) {
               _onTapNativeFlutter();
             } else if (index == 11) {
+              _onTapAdvance();
+            } else if (index == 12) {
               _onTapOther();
             }
           },);
@@ -129,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _onTapGradient() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => ViewEffectPage()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => UIEffectPage()));
   }
 
   _onTapPopView() {
@@ -166,5 +170,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _onTapOther() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => OtherFlutterPage()));
+  }
+
+  _onTapAdvance() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => AdvanceFlutterPage()));
   }
 }
