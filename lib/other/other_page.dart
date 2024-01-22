@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'keyboard/input_text_count_limit.dart';
 import 'keyboard/keyboard_manager_page.dart';
 import 'liefcycle/flutter_stful_life_cycle_page.dart';
 import 'load_local_font.dart';
@@ -29,6 +30,8 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
                 _onTapKeyboardManager();
               } else if (index == 3) {
                 _onTapLifeCycle();
+              } else if (index == 4) {
+                _onTapCountLimit();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -46,5 +49,9 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
 
   _onTapKeyboardManager() {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => KeyboardManagerPage()));
+  }
+
+  _onTapCountLimit() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => TextCountLimitPage()));
   }
 }
