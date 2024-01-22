@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'keyboard/keyboard_manager_page.dart';
 import 'liefcycle/flutter_stful_life_cycle_page.dart';
 import 'load_local_font.dart';
 
@@ -11,7 +12,7 @@ class OtherFlutterPage extends StatefulWidget {
 }
 
 class _OtherFlutterPageState extends State<OtherFlutterPage> {
-  final List<String> _titles = ['加载字体', '数据库Hive', '键盘监听和处理', '生命周期'];
+  final List<String> _titles = ['加载字体', '数据库Hive', '键盘监听和处理', '生命周期', '限制文本字数'];
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,7 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
               } else if(index == 1) {
 
               } else if (index == 2) {
-
+                _onTapKeyboardManager();
               } else if (index == 3) {
                 _onTapLifeCycle();
               }
@@ -41,5 +42,9 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
 
   _onTapLifeCycle() {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => CounterWidget(title: '声明周期',)));
+  }
+
+  _onTapKeyboardManager() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => KeyboardManagerPage()));
   }
 }
