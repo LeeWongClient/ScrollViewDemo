@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_demo/other/network/dio_api_request.dart';
 
 import 'keyboard/input_text_count_limit.dart';
 import 'keyboard/keyboard_manager_page.dart';
@@ -13,12 +14,12 @@ class OtherFlutterPage extends StatefulWidget {
 }
 
 class _OtherFlutterPageState extends State<OtherFlutterPage> {
-  final List<String> _titles = ['加载字体', '数据库Hive', '键盘监听和处理', '生命周期', '限制文本字数'];
+  final List<String> _titles = ['加载字体', '数据库Hive', '键盘监听和处理', '生命周期', '限制文本字数', 'dio网络请求'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: const Text('list view demo'),),
+        appBar: AppBar(title: const Text('other'),),
         body: Container(
           child: ListView.builder(itemBuilder: (context, index) {
             return ListTile(title: Text(_titles[index],), onTap: () {
@@ -32,6 +33,8 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
                 _onTapLifeCycle();
               } else if (index == 4) {
                 _onTapCountLimit();
+              } else if (index == 5) {
+                _onTapDia();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -53,5 +56,9 @@ class _OtherFlutterPageState extends State<OtherFlutterPage> {
 
   _onTapCountLimit() {
     Navigator.of(context).push(MaterialPageRoute(builder: (context) => TextCountLimitPage()));
+  }
+
+  _onTapDia() {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => DioNetwokPage()));
   }
 }

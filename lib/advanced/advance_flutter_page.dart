@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_demo/advanced/avoid_repeat_click.dart';
+import 'package:flutter_ui_demo/advanced/completer_task.dart';
 import 'package:flutter_ui_demo/advanced/timer_debounce_page.dart';
 
 import 'flutter_auto_complete.dart';
+import 'futrue_wait.dart';
 
 class AdvanceFlutterPage extends StatefulWidget {
   const AdvanceFlutterPage({super.key});
@@ -12,7 +14,7 @@ class AdvanceFlutterPage extends StatefulWidget {
 }
 
 class _AdvanceFlutterPageState extends State<AdvanceFlutterPage> {
-  final List<String> _titles = ['输入防抖', '定时器防抖', '按钮放连点'];
+  final List<String> _titles = ['输入防抖', '定时器防抖', '按钮放连点', '多个任务同时执行，监听都完成的状态'];
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,8 @@ class _AdvanceFlutterPageState extends State<AdvanceFlutterPage> {
                 _onTapTimeDebouncePage();
               } else if (index == 2) {
                 _onTapRepeatClick();
+              } else if (index == 3) {
+                _onTapMultiTask();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -45,5 +49,9 @@ class _AdvanceFlutterPageState extends State<AdvanceFlutterPage> {
 
   _onTapRepeatClick() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => AvoidRepeatClickPage()));
+  }
+
+  _onTapMultiTask() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FutureWaitPage()));
   }
 }
