@@ -22,6 +22,7 @@ public class FlutternativePlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
+      print("receive method call \(call.method)")
     switch call.method {
     case "phoneVibrate":
          let impactFeedbackGenerator = UIImpactFeedbackGenerator(style: .heavy)
@@ -32,18 +33,50 @@ public class FlutternativePlugin: NSObject, FlutterPlugin {
     case "showAlertMsg":
         showAlertMsg(msg: call.arguments as? String)
         result(true)
+    case "readFileAtPath":
+        readFileAtPath(path: call.arguments as? String, result: result)
+    case "showImageData":
+        showImageData(data: (call.arguments as? [String: Any])?["data"] as? FlutterStandardTypedData)
+        result(true)
     default:
       result(FlutterMethodNotImplemented)
     }
   }
 
-    private func showAlertMsg(msg: String?) {
+    var imageView: UIImageView = UIImageView()
+    
+    private func showImageData(data: FlutterStandardTypedData?) {
+        guard let imageData = data?.data, let image = UIImage(data: imageData) else {
+                    print("Error decoding image data")
+                    return
+        }
+        print("receive image image \(image.size)")
+        imageView.image = image
+        imageView.frame = CGRect(origin: CGPoint(x: 100, y: 500), size: CGSize(width: 200, height: 200))
+        UIApplication.shared.keyWindow?.rootViewController?.view.addSubview(imageView)
+        
+    }
+    
+    private func showAlertMsg(msg: String?)  {
         let alert = UIAlertController(title: "原生alert", message: "\(msg ?? "msg")", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "知道了", style: .default))
         UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
         addFlutterAlert()
     }
-    
+
+    private func readFileAtPath(path: String?, result: @escaping FlutterResult) {
+        guard let filePath = path else {
+            print("路径为空 不合法")
+            return
+        }
+        if let content = try? String(contentsOfFile: filePath, encoding: .utf8) {
+            print("原生获取到文件中的内容 \(content)")
+            result(true)
+        } else {
+            result(false)
+        }
+    }
+
     private func addFlutterAlert() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 10) { [weak self] in
             self?.eventChannel?.invokeMethod("showFlutterAlert", arguments: "Native 调用flutter 让flutter弹窗")

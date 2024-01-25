@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_demo/vieweffect/draw_path.dart';
 import 'package:flutter_ui_demo/vieweffect/ui_corder_radius.dart';
 import 'package:flutter_ui_demo/vieweffect/view_effect.dart';
 
@@ -10,7 +11,7 @@ class UIEffectPage extends StatefulWidget {
 }
 
 class _UIEffectPageState extends State<UIEffectPage> {
-  final List<String> _titles = ['渐变色', '圆角设置',];
+  final List<String> _titles = ['渐变色', '圆角设置', '绘制曲线',];
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,8 @@ class _UIEffectPageState extends State<UIEffectPage> {
                 _onTapGradientView();
               } else if (index == 1) {
                 _onTapCornerRadius();
+              } else if (index == 2) {
+                _onTapDrawPath();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -37,5 +40,9 @@ class _UIEffectPageState extends State<UIEffectPage> {
 
   _onTapCornerRadius() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => UICornerRadiusPage()));
+  }
+
+  _onTapDrawPath() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DrawCurvePath()));
   }
 }

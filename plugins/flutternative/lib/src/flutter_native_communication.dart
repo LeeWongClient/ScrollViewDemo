@@ -31,7 +31,14 @@ class FlutterNativePlugin {
 
   static Future<bool> sendMsgToiOS(String msg) async {
     return await _channel.invokeMethod("showAlertMsg", msg);
+  }
 
+  static Future<bool> getFileAtPath(String path ) async {
+    return await _channel.invokeMethod("readFileAtPath", path);
+  }
+
+  static Future<bool> showImageData(Uint8List data) async {
+    return await _channel.invokeMethod("showImageData", {"data": data});
   }
 
   static void listenToiOSMsg(Future<dynamic> Function(NativeToFlutterMethod method) onCall) async {

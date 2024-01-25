@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_demo/advanced/avoid_repeat_click.dart';
 import 'package:flutter_ui_demo/advanced/completer_task.dart';
+import 'package:flutter_ui_demo/advanced/create_load_local_file.dart';
+import 'package:flutter_ui_demo/advanced/flutter_snap_native_show.dart';
 import 'package:flutter_ui_demo/advanced/timer_debounce_page.dart';
 
 import 'flutter_auto_complete.dart';
@@ -14,7 +16,7 @@ class AdvanceFlutterPage extends StatefulWidget {
 }
 
 class _AdvanceFlutterPageState extends State<AdvanceFlutterPage> {
-  final List<String> _titles = ['输入防抖', '定时器防抖', '按钮放连点', '多个任务同时执行，监听都完成的状态'];
+  final List<String> _titles = ['输入防抖', '定时器防抖', '按钮放连点', '多个任务同时执行，监听都完成的状态', '文件共享', '展示gif'];
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +33,10 @@ class _AdvanceFlutterPageState extends State<AdvanceFlutterPage> {
                 _onTapRepeatClick();
               } else if (index == 3) {
                 _onTapMultiTask();
+              } else if (index == 4) {
+                _onTapShareFile();
+              } else if (index == 5) {
+                _onTapShowGifPage();
               }
             },);
           }, itemCount: _titles.length, itemExtent: 44,),
@@ -53,5 +59,13 @@ class _AdvanceFlutterPageState extends State<AdvanceFlutterPage> {
 
   _onTapMultiTask() {
     Navigator.push(context, MaterialPageRoute(builder: (context) => FutureWaitPage()));
+  }
+
+  _onTapShareFile() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => LoadAndCreateLocalFilePage()));
+  }
+
+  _onTapShowGifPage() {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => FlutterSnapNativeDrawPage()));
   }
 }
